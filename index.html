@@ -21,20 +21,21 @@ header{
   background:var(--azul-oscuro);
   color:var(--blanco);
   text-align:center;
-  padding:25px 10px; /* AUMENTADO */
+  padding:25px 10px;
 }
 header h1{
-  font-size:1.8em; /* más pequeño */
+  font-size:1.8em;
   margin-bottom:5px;
+  cursor:pointer;
 }
 header p{
-  font-size:1.2em; /* más pequeño */
+  font-size:1.2em;
 }
 
 /* NAVBAR */
 nav{
   background:var(--azul-medio);
-  padding:15px; /* AUMENTADO */
+  padding:15px;
   text-align:center;
 }
 nav button{
@@ -46,9 +47,7 @@ nav button{
   cursor:pointer;
   font-weight:bold;
 }
-nav button:hover{
-  background:#ddd;
-}
+nav button:hover{background:#ddd;}
 
 /* PRODUCTOS */
 .contenedor{
@@ -132,16 +131,37 @@ nav button:hover{
 #carritoPanel .comprar{background:var(--azul-medio); color:white;}
 #carritoPanel .whatsapp{background:var(--verde); color:white;}
 
+/* LOGOS DE MARCAS */
+.marcas{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:30px;
+  padding:30px 10px;
+  border-top:2px solid #eee;
+  margin-top:20px;
+}
+.marcas img{
+  height:40px;
+  opacity:0.8;
+  transition:0.3s;
+}
+.marcas img:hover{
+  opacity:1;
+  transform:scale(1.1);
+}
+
 /* RESPONSIVE */
 @media(max-width:768px){
   .contenedor{flex-direction:column; align-items:center;}
+  .marcas img{height:30px;}
 }
 </style>
 </head>
 <body>
 
 <header>
-  <h1 onclick="mostrarInicio()" style="cursor:pointer;">UVEPROTECH</h1>
+  <h1 onclick="mostrarInicio()">UVEPROTECH</h1>
   <p>Catálogo de Celulares</p>
 </header>
 
@@ -153,6 +173,16 @@ nav button:hover{
 </nav>
 
 <div class="contenedor" id="productos"></div>
+
+<!-- Logos de Marcas -->
+<div class="marcas" id="logosMarcas" style="display:none;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
+  <img src="https://seeklogo.com/images/P/poco-logo-94CB5E6E65-seeklogo.com.png" alt="Poco">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Motorola_logo.svg" alt="Motorola">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple iPhone">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Honor_logo.svg" alt="Honor">
+</div>
 
 <!-- PANEL DEL CARRITO -->
 <div id="carritoPanel">
@@ -204,6 +234,10 @@ function mostrarProductos(lista){
     `;
     cont.appendChild(card);
   });
+
+  // Mostrar logos solo en inicio
+  document.getElementById("logosMarcas").style.display = 
+    (lista === productos.inicio) ? "flex" : "none";
 }
 
 function mostrarInicio(){mostrarProductos(productos.inicio);}
@@ -223,7 +257,7 @@ function actualizarCarrito(){
     lista.appendChild(li);
   });
 }
-function irWhatsApp(nombre="",precio=""){
+function irWhatsApp(){
   let texto="Hola, quiero comprar:\n";
   carrito.forEach(p=>texto+=`- ${p.nombre} $${p.precio}\n`);
   let url=`https://wa.me/51949030039?text=${encodeURIComponent(texto)}`;
