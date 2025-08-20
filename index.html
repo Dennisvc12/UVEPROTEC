@@ -1,329 +1,310 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UVEPROTECH — Catálogo de Celulares</title>
-<style>
-:root {
-  --azul-1: #0a2540;
-  --azul-2: #1b4d84;
-  --verde: #25d366;
-  --blanco: #ffffff;
-  --gris: #f4f4f4;
-}
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--gris);
-}
-header {
-  background: var(--azul-1);
-  color: var(--blanco);
-  text-align: center;
-  padding: 25px 10px;
-}
-header h1 {
-  margin: 0;
-  font-size: 1.7rem;
-}
-header p {
-  margin: 5px 0 0;
-  font-size: 1rem;
-}
-header h1 a {
-  color: white;
-  text-decoration: none;
-}
-nav {
-  background: var(--azul-2);
-  padding: 15px;
-  text-align: center;
-}
-nav button {
-  background: var(--blanco);
-  border: none;
-  padding: 10px 18px;
-  margin: 0 5px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-nav button:hover {
-  background: #e0e0e0;
-}
-.catalogo {
-  display: none;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 25px;
-}
-.card {
-  background: var(--blanco);
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  width: 280px;
-  text-align: center;
-}
-.card img {
-  width: 80px;
-  height: auto;
-}
-.card h3 {
-  margin: 10px 0;
-}
-.card .precio {
-  font-weight: bold;
-  margin: 8px 0;
-}
-.card button, .card a {
-  display: inline-block;
-  margin: 5px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-}
-.card button {
-  background: var(--azul-1);
-  color: var(--blanco);
-  border: none;
-  cursor: pointer;
-}
-.card button:hover {
-  background: #051d34;
-}
-.card a {
-  background: var(--verde);
-  color: var(--blanco);
-}
-/* Carrito */
-.cart-panel {
-  position: fixed;
-  top: 0;
-  right: -400px;
-  width: 350px;
-  height: 100%;
-  background: var(--blanco);
-  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
-  transition: right 0.3s ease-in-out;
-  padding: 20px;
-  overflow-y: auto;
-}
-.cart-panel.active {
-  right: 0;
-}
-.cart-panel h2 {
-  margin-top: 0;
-}
-.cart-item {
-  border-bottom: 1px solid #ddd;
-  padding: 8px 0;
-}
-.cart-actions {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.cart-actions a, .cart-actions button {
-  padding: 12px;
-  text-align: center;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-}
-.cart-actions button {
-  background: var(--azul-1);
-  color: var(--blanco);
-  border: none;
-}
-.cart-actions a {
-  background: var(--verde);
-  color: var(--blanco);
-}
-/* Logos deslizantes */
-.logos-container {
-  overflow: hidden;
-  background: var(--blanco);
-  padding: 20px 0;
-}
-.logos-slide {
-  display: flex;
-  width: calc(150px * 6);
-  animation: scroll 20s linear infinite;
-}
-.logos-slide img {
-  width: 100px;
-  margin: 0 25px;
-  object-fit: contain;
-}
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UVEPROTECH — Catálogo de Celulares</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+    header {
+      background-color: #0a2540;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.7em;
+    }
+    header p {
+      margin: 0;
+      font-size: 1em;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #1b4d84;
+      padding: 10px;
+      gap: 10px;
+    }
+    nav button {
+      background: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    nav button:hover {
+      background: #60a5fa;
+      color: white;
+    }
+
+    /* Logos debajo del menú */
+    .logo-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin: 15px 0;
+    }
+    .logo-bar img {
+      height: 40px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    .logo-bar img:hover {
+      transform: scale(1.1);
+    }
+
+    main {
+      padding: 20px;
+    }
+    .productos {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      width: 250px;
+    }
+    .card img {
+      width: 80px;
+      height: 80px;
+    }
+    .card button {
+      background: #0a2540;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+      font-size: 14px;
+    }
+    .card button:hover {
+      background: #1b4d84;
+    }
+    .whatsapp-btn {
+      background: #25d366;
+      margin-top: 8px;
+    }
+    .whatsapp-btn:hover {
+      background: #1da851;
+    }
+
+    /* Carrito lateral */
+    #carrito {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 300px;
+      height: 100%;
+      background: white;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+      transition: right 0.3s ease;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    #carrito.active {
+      right: 0;
+    }
+    #carrito h2 {
+      text-align: center;
+    }
+    .carrito-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .carrito-btns a, .carrito-btns button {
+      padding: 10px;
+      text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .carrito-btns .comprar {
+      background: #0a2540;
+      color: white;
+    }
+    .carrito-btns .whatsapp {
+      background: #25d366;
+      color: white;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1 onclick="mostrarSeccion('inicio')" style="cursor:pointer;">UVEPROTECH</h1>
+    <p>Catálogo de Celulares</p>
+  </header>
 
-<header>
-  <h1><a href="#" onclick="showSection('inicio')">UVEPROTECH</a></h1>
-  <p>Catálogo de Celulares</p>
-</header>
+  <nav>
+    <button onclick="mostrarSeccion('inicio')">Inicio</button>
+    <button onclick="mostrarSeccion('baja')">Gama Baja</button>
+    <button onclick="mostrarSeccion('media')">Gama Media</button>
+    <button onclick="mostrarSeccion('alta')">Gama Alta</button>
+  </nav>
 
-<nav>
-  <button onclick="showSection('inicio')">Inicio</button>
-  <button onclick="showSection('baja')">Gama Baja</button>
-  <button onclick="showSection('media')">Gama Media</button>
-  <button onclick="showSection('alta')">Gama Alta</button>
-</nav>
+  <!-- Logos debajo del menú -->
+  <div class="logo-bar" id="logos">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Xiaomi_logo.svg" alt="Xiaomi">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Apple-logo-black.svg" alt="Apple">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
+  </div>
 
-<!-- Página Inicio -->
-<div id="inicio" class="catalogo">
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Oferta Especial 1</h3>
-    <p class="precio">$99</p>
-    <button onclick="addToCart('Oferta Especial 1', 99)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Oferta Especial 2</h3>
-    <p class="precio">$199</p>
-    <button onclick="addToCart('Oferta Especial 2', 199)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Oferta Especial 3</h3>
-    <p class="precio">$299</p>
-    <button onclick="addToCart('Oferta Especial 3', 299)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-</div>
+  <main>
+    <!-- Inicio -->
+    <section id="inicio" class="productos">
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Oferta">
+        <h3>Oferta Especial 1</h3>
+        <p><b>$99</b></p>
+        <button onclick="añadirAlCarrito('Oferta Especial 1', 99)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Oferta">
+        <h3>Oferta Especial 2</h3>
+        <p><b>$199</b></p>
+        <button onclick="añadirAlCarrito('Oferta Especial 2', 199)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Plain_Yellow_Star.png" alt="Oferta">
+        <h3>Oferta Especial 3</h3>
+        <p><b>$299</b></p>
+        <button onclick="añadirAlCarrito('Oferta Especial 3', 299)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+    </section>
 
-<!-- Logos solo en inicio -->
-<div id="logos" class="logos-container">
-  <div class="logos-slide">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Samsung_logo_blue.png" alt="Samsung">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
-  </div>
-</div>
+    <!-- Gama Baja -->
+    <section id="baja" class="productos" style="display:none;">
+      <div class="card">
+        <img src="https://via.placeholder.com/80" alt="Celular">
+        <h3>Celular Gama Baja 1</h3>
+        <p><b>$120</b></p>
+        <button onclick="añadirAlCarrito('Gama Baja 1', 120)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/80" alt="Celular">
+        <h3>Celular Gama Baja 2</h3>
+        <p><b>$150</b></p>
+        <button onclick="añadirAlCarrito('Gama Baja 2', 150)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/80" alt="Celular">
+        <h3>Celular Gama Baja 3</h3>
+        <p><b>$180</b></p>
+        <button onclick="añadirAlCarrito('Gama Baja 3', 180)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+    </section>
 
-<!-- Gama Baja -->
-<div id="baja" class="catalogo">
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Modelo Básico A</h3>
-    <p class="precio">$120</p>
-    <button onclick="addToCart('Modelo Básico A', 120)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Modelo Básico B</h3>
-    <p class="precio">$140</p>
-    <button onclick="addToCart('Modelo Básico B', 140)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Modelo Básico C</h3>
-    <p class="precio">$160</p>
-    <button onclick="addToCart('Modelo Básico C', 160)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-</div>
+    <!-- Gama Media -->
+    <section id="media" class="productos" style="display:none;">
+      <div class="card">
+        <img src="https://via.placeholder.com/80" alt="Celular">
+        <h3>Celular Gama Media 1</h3>
+        <p><b>$300</b></p>
+        <button onclick="añadirAlCarrito('Gama Media 1', 300)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/80" alt="Celular">
+        <h3>Celular Gama Media 2</h3>
+        <p><b>$350</b></p>
+        <button onclick="añadirAlCarrito('Gama Media 2', 350)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/80" alt="Celular">
+        <h3>Celular Gama Media 3</h3>
+        <p><b>$400</b></p>
+        <button onclick="añadirAlCarrito('Gama Media 3', 400)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+    </section>
 
-<!-- Gama Media -->
-<div id="media" class="catalogo">
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Modelo Medio A</h3>
-    <p class="precio">$250</p>
-    <button onclick="addToCart('Modelo Medio A', 250)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Modelo Medio B</h3>
-    <p class="precio">$280</p>
-    <button onclick="addToCart('Modelo Medio B', 280)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Modelo Medio C</h3>
-    <p class="precio">$300</p>
-    <button onclick="addToCart('Modelo Medio C', 300)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-</div>
+    <!-- Gama Alta -->
+    <section id="alta" class="productos" style="display:none;">
+      <div class="card">
+        <img src="https://via.placeholder.com/80" alt="Celular">
+        <h3>Celular Gama Alta 1</h3>
+        <p><b>$800</b></p>
+        <button onclick="añadirAlCarrito('Gama Alta 1', 800)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/80" alt="Celular">
+        <h3>Celular Gama Alta 2</h3>
+        <p><b>$950</b></p>
+        <button onclick="añadirAlCarrito('Gama Alta 2', 950)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/80" alt="Celular">
+        <h3>Celular Gama Alta 3</h3>
+        <p><b>$1100</b></p>
+        <button onclick="añadirAlCarrito('Gama Alta 3', 1100)">🛒 Añadir al Carrito</button>
+        <a href="https://wa.me/51949030039" class="whatsapp-btn">WhatsApp</a>
+      </div>
+    </section>
+  </main>
 
-<!-- Gama Alta -->
-<div id="alta" class="catalogo">
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Modelo Premium A</h3>
-    <p class="precio">$600</p>
-    <button onclick="addToCart('Modelo Premium A', 600)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Modelo Premium B</h3>
-    <p class="precio">$750</p>
-    <button onclick="addToCart('Modelo Premium B', 750)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
-    <h3>Modelo Premium C</h3>
-    <p class="precio">$900</p>
-    <button onclick="addToCart('Modelo Premium C', 900)">🛒 Añadir al Carrito</button>
-    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
-  </div>
-</div>
+  <!-- Carrito lateral -->
+  <aside id="carrito">
+    <h2>Carrito</h2>
+    <ul id="listaCarrito"></ul>
+    <div class="carrito-btns">
+      <button class="comprar">Finalizar Compra</button>
+      <a href="https://wa.me/51949030039" class="whatsapp">Ir a WhatsApp</a>
+    </div>
+  </aside>
 
-<!-- Panel del Carrito -->
-<div class="cart-panel" id="cartPanel">
-  <h2>🛒 Carrito</h2>
-  <div id="cartItems"></div>
-  <div class="cart-actions">
-    <button onclick="checkout()">Comprar</button>
-    <a href="https://wa.me/51949030039" target="_blank">Ir a WhatsApp</a>
-  </div>
-</div>
+  <script>
+    function mostrarSeccion(id) {
+      document.querySelectorAll("main section").forEach(sec => sec.style.display = "none");
+      document.getElementById(id).style.display = "flex";
 
-<script>
-let cart = [];
-function addToCart(product, price) {
-  cart.push({product, price});
-  updateCart();
-  document.getElementById("cartPanel").classList.add("active");
-}
-function updateCart() {
-  const cartItems = document.getElementById("cartItems");
-  cartItems.innerHTML = "";
-  cart.forEach((item) => {
-    cartItems.innerHTML += `<div class="cart-item">${item.product} - $${item.price}</div>`;
-  });
-}
-function checkout() {
-  alert("Procesando compra de " + cart.length + " productos.");
-}
-function showSection(section) {
-  document.querySelectorAll(".catalogo").forEach(el => el.style.display = "none");
-  document.getElementById(section).style.display = "flex";
-  document.getElementById("logos").style.display = (section === "inicio") ? "block" : "none";
-}
-showSection('inicio');
-</script>
+      // Mostrar logos solo en inicio
+      document.getElementById("logos").style.display = (id === "inicio") ? "flex" : "none";
+    }
 
+    let carrito = [];
+    function añadirAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      actualizarCarrito();
+      document.getElementById("carrito").classList.add("active");
+    }
+
+    function actualizarCarrito() {
+      const lista = document.getElementById("listaCarrito");
+      lista.innerHTML = "";
+      carrito.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = `${p.nombre} - $${p.precio}`;
+        lista.appendChild(li);
+      });
+    }
+  </script>
 </body>
 </html>
