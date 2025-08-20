@@ -7,8 +7,8 @@
 <style>
   body{font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9;}
   header{background:#0a2540; color:white; text-align:center; padding:1rem; cursor:pointer;}
-  header h1{margin:0; font-size:2rem;}
-  header p{margin:0; font-size:1.3rem; font-weight:bold;}
+  header h1{margin:0; font-size:1.8rem;}   /* UVEPROTECH más pequeño */
+  header p{margin:0; font-size:1.1rem; font-weight:bold;} /* Catálogo más pequeño */
   nav{display:flex; justify-content:center; gap:1rem; background:#1b4d84; padding:.5rem; flex-wrap:wrap;}
   nav button{background:white; border:none; padding:.5rem 1rem; border-radius:5px; cursor:pointer;}
   nav button:hover{background:#60a5fa; color:white;}
@@ -18,20 +18,28 @@
   .producto h3{margin:.5rem 0;}
   .producto p{color:#333; font-weight:bold;}
   .btns{display:flex; justify-content:center; gap:.5rem; margin-top:.5rem;}
-  .btns a{flex:1; text-decoration:none; padding:.5rem; border-radius:5px; font-size:.9rem;}
+  .btns a{flex:1; text-decoration:none; padding:.5rem; border-radius:5px; font-size:.9rem; text-align:center;}
   .carrito{background:#0a2540; color:white;}
   .whatsapp{background:#25d366; color:white;}
 
   /* Carrito lateral */
   #carritoPanel{
-    position:fixed; top:0; right:-320px; width:300px; height:100%;
-    background:white; box-shadow:-2px 0 5px rgba(0,0,0,.3);
+    position:fixed; top:0; right:-340px; width:320px; height:100%;
+    background:white; box-shadow:-2px 0 8px rgba(0,0,0,.3);
     padding:1rem; transition:.3s; z-index:1000; overflow-y:auto;
+    display:flex; flex-direction:column; justify-content:space-between;
   }
   #carritoPanel.active{right:0;}
-  #carritoPanel h2{margin-top:0; color:#0a2540;}
+  #carritoPanel h2{margin:0 0 .5rem 0; color:#0a2540;}
   .item-carrito{border-bottom:1px solid #ccc; padding:.5rem 0;}
   .cerrarCarrito{background:red; color:white; border:none; padding:.3rem .6rem; border-radius:5px; cursor:pointer; float:right;}
+  #accionesCarrito{margin-top:1rem; display:flex; flex-direction:column; gap:.5rem;}
+  #accionesCarrito button, #accionesCarrito a{
+    padding:.7rem; border:none; border-radius:6px; cursor:pointer; text-align:center;
+    font-weight:bold; text-decoration:none; display:block;
+  }
+  .btn-comprar{background:#0a2540; color:white;}
+  .btn-whatsapp{background:#25d366; color:white;}
 </style>
 </head>
 <body>
@@ -118,6 +126,10 @@
   <h2>🛒 Carrito</h2>
   <div id="itemsCarrito"></div>
   <p id="total"></p>
+  <div id="accionesCarrito">
+    <button class="btn-comprar">Comprar</button>
+    <a href="#" id="btnWhatsapp" target="_blank" class="btn-whatsapp">Ir a WhatsApp</a>
+  </div>
 </div>
 
 <script>
@@ -150,6 +162,13 @@
       total += item.precio;
     });
     document.getElementById("total").innerText = "Total: $" + total;
+
+    // Actualizar link de WhatsApp
+    let mensaje = "Hola, quiero comprar:\n";
+    carrito.forEach(i => mensaje += `- ${i.nombre} ($${i.precio})\n`);
+    mensaje += `Total: $${total}`;
+    let url = "https://wa.me/51949030039?text=" + encodeURIComponent(mensaje);
+    document.getElementById("btnWhatsapp").href = url;
   }
   function toggleCarrito(forceOpen=false){
     let panel = document.getElementById("carritoPanel");
