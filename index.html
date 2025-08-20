@@ -25,11 +25,15 @@ header {
 }
 header h1 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
 }
 header p {
   margin: 5px 0 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
+}
+header h1 a {
+  color: white;
+  text-decoration: none;
 }
 nav {
   background: var(--azul-2);
@@ -49,7 +53,7 @@ nav button:hover {
   background: #e0e0e0;
 }
 .catalogo {
-  display: flex;
+  display: none;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
@@ -95,6 +99,7 @@ nav button:hover {
   background: var(--verde);
   color: var(--blanco);
 }
+/* Carrito */
 .cart-panel {
   position: fixed;
   top: 0;
@@ -148,11 +153,11 @@ nav button:hover {
 }
 .logos-slide {
   display: flex;
-  width: calc(200px * 8);
+  width: calc(150px * 6);
   animation: scroll 20s linear infinite;
 }
 .logos-slide img {
-  width: 150px;
+  width: 100px;
   margin: 0 25px;
   object-fit: contain;
 }
@@ -165,7 +170,7 @@ nav button:hover {
 <body>
 
 <header>
-  <h1><a href="#" onclick="showSection('inicio')" style="color:white; text-decoration:none;">UVEPROTECH</a></h1>
+  <h1><a href="#" onclick="showSection('inicio')">UVEPROTECH</a></h1>
   <p>Catálogo de Celulares</p>
 </header>
 
@@ -176,6 +181,7 @@ nav button:hover {
   <button onclick="showSection('alta')">Gama Alta</button>
 </nav>
 
+<!-- Página Inicio -->
 <div id="inicio" class="catalogo">
   <div class="card">
     <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
@@ -200,13 +206,87 @@ nav button:hover {
   </div>
 </div>
 
-<!-- Logos -->
-<div class="logos-container">
+<!-- Logos solo en inicio -->
+<div id="logos" class="logos-container">
   <div class="logos-slide">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Samsung_logo_blue.png/320px-Samsung_logo_blue.png" alt="Samsung">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Xiaomi_logo.svg/320px-Xiaomi_logo.svg.png" alt="Xiaomi">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/220px-Apple_logo_black.svg.png" alt="Apple">
-    <img src="https://seeklogo.com/images/I/infinix-logo-568A9B51A2-seeklogo.com.png" alt="Infinix">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Samsung_logo_blue.png" alt="Samsung">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+  </div>
+</div>
+
+<!-- Gama Baja -->
+<div id="baja" class="catalogo">
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Modelo Básico A</h3>
+    <p class="precio">$120</p>
+    <button onclick="addToCart('Modelo Básico A', 120)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
+  </div>
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Modelo Básico B</h3>
+    <p class="precio">$140</p>
+    <button onclick="addToCart('Modelo Básico B', 140)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
+  </div>
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Modelo Básico C</h3>
+    <p class="precio">$160</p>
+    <button onclick="addToCart('Modelo Básico C', 160)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
+  </div>
+</div>
+
+<!-- Gama Media -->
+<div id="media" class="catalogo">
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Modelo Medio A</h3>
+    <p class="precio">$250</p>
+    <button onclick="addToCart('Modelo Medio A', 250)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
+  </div>
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Modelo Medio B</h3>
+    <p class="precio">$280</p>
+    <button onclick="addToCart('Modelo Medio B', 280)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
+  </div>
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Modelo Medio C</h3>
+    <p class="precio">$300</p>
+    <button onclick="addToCart('Modelo Medio C', 300)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
+  </div>
+</div>
+
+<!-- Gama Alta -->
+<div id="alta" class="catalogo">
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Modelo Premium A</h3>
+    <p class="precio">$600</p>
+    <button onclick="addToCart('Modelo Premium A', 600)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
+  </div>
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Modelo Premium B</h3>
+    <p class="precio">$750</p>
+    <button onclick="addToCart('Modelo Premium B', 750)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
+  </div>
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Modelo Premium C</h3>
+    <p class="precio">$900</p>
+    <button onclick="addToCart('Modelo Premium C', 900)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
   </div>
 </div>
 
@@ -230,7 +310,7 @@ function addToCart(product, price) {
 function updateCart() {
   const cartItems = document.getElementById("cartItems");
   cartItems.innerHTML = "";
-  cart.forEach((item, index) => {
+  cart.forEach((item) => {
     cartItems.innerHTML += `<div class="cart-item">${item.product} - $${item.price}</div>`;
   });
 }
@@ -240,6 +320,7 @@ function checkout() {
 function showSection(section) {
   document.querySelectorAll(".catalogo").forEach(el => el.style.display = "none");
   document.getElementById(section).style.display = "flex";
+  document.getElementById("logos").style.display = (section === "inicio") ? "block" : "none";
 }
 showSection('inicio');
 </script>
