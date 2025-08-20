@@ -9,126 +9,177 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #f5f7fa;
+      color: #222;
     }
+
+    /* HEADER */
     header {
-      background-color: #0a2540;
+      background: #0a2540;
       color: white;
       padding: 15px 30px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      position: relative;
     }
+
+    .header-center {
+      text-align: center;
+      flex-grow: 1;
+    }
+
     header h1 {
       margin: 0;
-      font-size: 1.8rem;
+      font-size: 26px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    /* Icono carrito */
+    .cart-icon {
+      font-size: 22px;
       cursor: pointer;
     }
-    header small {
-      display: block;
-      font-size: 0.9rem;
-      color: #cbd5e1;
-    }
+
     nav {
-      background-color: #1b4d84;
+      background: #1b4d84;
       display: flex;
       justify-content: center;
+      padding: 10px;
       gap: 15px;
-      padding: 10px 0;
     }
+
     nav button {
-      background: white;
+      padding: 10px 20px;
       border: none;
-      padding: 8px 20px;
       border-radius: 12px;
+      background: white;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.3s;
     }
-    nav button:hover {
-      background: #dbeafe;
+
+    nav button.active {
+      background: #0a2540;
+      color: white;
     }
+
+    /* Logos marcas */
     .brand-logos {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 40px;
+      gap: 30px;
       margin: 20px 0;
-      animation: scroll 15s linear infinite;
+      overflow: hidden;
     }
+
     .brand-logos img {
       max-height: 40px;
       object-fit: contain;
     }
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+
+    /* Productos */
     .products {
       display: flex;
       justify-content: center;
       gap: 20px;
-      padding: 20px;
+      flex-wrap: wrap;
+      margin: 20px;
     }
-    .product-card {
+
+    .product {
       background: white;
       padding: 15px;
       border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
       width: 220px;
+      text-align: center;
     }
-    .product-card img {
-      max-width: 100px;
+
+    .product img {
+      width: 100px;
       margin-bottom: 10px;
     }
-    .product-card h3 {
-      margin: 10px 0;
+
+    .product h3 {
+      margin: 10px 0 5px;
     }
-    .product-card button {
-      margin: 5px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+
+    .product p {
+      margin: 5px 0;
       font-weight: bold;
     }
-    .btn-cart { background-color: #0a2540; color: white; }
-    .btn-whatsapp { background-color: #25d366; color: white; }
 
-    /* Carrito lateral */
+    .btn {
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      margin: 5px;
+      font-weight: bold;
+    }
+
+    .btn-cart {
+      background: #0a2540;
+      color: white;
+    }
+
+    .btn-wa {
+      background: #25d366;
+      color: white;
+    }
+
+    /* CARRITO */
     .cart-panel {
       position: fixed;
       top: 0;
       right: -350px;
-      width: 300px;
+      width: 350px;
       height: 100%;
       background: white;
-      box-shadow: -2px 0 6px rgba(0,0,0,0.2);
-      transition: right 0.3s;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+      transition: right 0.3s ease;
       padding: 20px;
       z-index: 1000;
     }
-    .cart-panel.open { right: 0; }
-    .cart-panel h2 { margin-top: 0; }
-    .cart-item { margin: 10px 0; }
-    .cart-actions {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .cart-actions a {
-      text-align: center;
-      padding: 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .cart-actions .btn-buy { background: #0a2540; color: white; }
-    .cart-actions .btn-wa { background: #25d366; color: white; }
 
-    /* Botón WhatsApp flotante */
-    .whatsapp-float {
+    .cart-panel.active {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-header h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .close-cart {
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      color: #0a2540;
+    }
+
+    .cart-items {
+      margin: 20px 0;
+    }
+
+    .cart-footer {
+      text-align: center;
+    }
+
+    /* BOTÓN WA FLOTANTE */
+    .wa-float {
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -138,172 +189,187 @@
       width: 60px;
       height: 60px;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       font-size: 28px;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
       z-index: 999;
-    }
-
-    /* Icono carrito en header */
-    .cart-icon {
-      font-size: 24px;
-      cursor: pointer;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div onclick="showSection('inicio')">
+    <div class="header-center">
       <h1>UVEPROTECH</h1>
-      <small>Catálogo de Celulares</small>
+      <p>Catálogo de Celulares</p>
     </div>
     <div class="cart-icon" onclick="toggleCart()">🛒</div>
   </header>
 
   <nav>
-    <button onclick="showSection('inicio')">Inicio</button>
-    <button onclick="showSection('gama-baja')">Gama Baja</button>
-    <button onclick="showSection('gama-media')">Gama Media</button>
-    <button onclick="showSection('gama-alta')">Gama Alta</button>
+    <button onclick="showSection('inicio')" class="active">Inicio</button>
+    <button onclick="showSection('baja')">Gama Baja</button>
+    <button onclick="showSection('media')">Gama Media</button>
+    <button onclick="showSection('alta')">Gama Alta</button>
   </nav>
 
-  <!-- Logos marcas solo en inicio -->
-  <section id="logos" class="brand-logos">
+  <!-- Logos -->
+  <div id="logos" class="brand-logos">
     <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
     <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
     <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi">
-  </section>
+  </div>
 
-  <!-- Secciones -->
-  <section id="inicio" class="products">
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
+  <!-- Secciones de productos -->
+  <div id="inicio" class="products">
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
       <h3>Oferta Especial 1</h3>
       <p>$99</p>
-      <button class="btn-cart" onclick="addToCart('Oferta Especial 1')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
+      <button class="btn btn-cart" onclick="addToCart('Oferta Especial 1',99)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
     </div>
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
       <h3>Oferta Especial 2</h3>
       <p>$199</p>
-      <button class="btn-cart" onclick="addToCart('Oferta Especial 2')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
+      <button class="btn btn-cart" onclick="addToCart('Oferta Especial 2',199)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
     </div>
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
       <h3>Oferta Especial 3</h3>
       <p>$299</p>
-      <button class="btn-cart" onclick="addToCart('Oferta Especial 3')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
-    </div>
-  </section>
-
-  <section id="gama-baja" class="products" style="display:none;">
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
-      <h3>Celular Gama Baja 1</h3>
-      <p>$120</p>
-      <button class="btn-cart" onclick="addToCart('Celular Gama Baja 1')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
-    </div>
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
-      <h3>Celular Gama Baja 2</h3>
-      <p>$150</p>
-      <button class="btn-cart" onclick="addToCart('Celular Gama Baja 2')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
-    </div>
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
-      <h3>Celular Gama Baja 3</h3>
-      <p>$180</p>
-      <button class="btn-cart" onclick="addToCart('Celular Gama Baja 3')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
-    </div>
-  </section>
-
-  <section id="gama-media" class="products" style="display:none;">
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
-      <h3>Celular Gama Media 1</h3>
-      <p>$250</p>
-      <button class="btn-cart" onclick="addToCart('Celular Gama Media 1')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
-    </div>
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
-      <h3>Celular Gama Media 2</h3>
-      <p>$280</p>
-      <button class="btn-cart" onclick="addToCart('Celular Gama Media 2')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
-    </div>
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
-      <h3>Celular Gama Media 3</h3>
-      <p>$320</p>
-      <button class="btn-cart" onclick="addToCart('Celular Gama Media 3')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
-    </div>
-  </section>
-
-  <section id="gama-alta" class="products" style="display:none;">
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
-      <h3>Celular Gama Alta 1</h3>
-      <p>$500</p>
-      <button class="btn-cart" onclick="addToCart('Celular Gama Alta 1')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
-    </div>
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
-      <h3>Celular Gama Alta 2</h3>
-      <p>$650</p>
-      <button class="btn-cart" onclick="addToCart('Celular Gama Alta 2')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
-    </div>
-    <div class="product-card">
-      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="cel">
-      <h3>Celular Gama Alta 3</h3>
-      <p>$800</p>
-      <button class="btn-cart" onclick="addToCart('Celular Gama Alta 3')">Añadir al Carrito</button>
-      <a href="https://wa.me/51949030039" class="btn-whatsapp">WhatsApp</a>
-    </div>
-  </section>
-
-  <!-- Carrito -->
-  <div id="cartPanel" class="cart-panel">
-    <h2>Carrito</h2>
-    <div id="cartItems"></div>
-    <div class="cart-actions">
-      <a href="https://wa.me/51949030039" class="btn-buy">Comprar</a>
-      <a href="https://wa.me/51949030039" class="btn-wa">Ir a WhatsApp</a>
+      <button class="btn btn-cart" onclick="addToCart('Oferta Especial 3',299)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
     </div>
   </div>
 
-  <!-- Botón WhatsApp flotante -->
-  <a href="https://wa.me/51949030039" class="whatsapp-float">💬</a>
+  <div id="baja" class="products" style="display:none;">
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
+      <h3>Celular Gama Baja 1</h3>
+      <p>$150</p>
+      <button class="btn btn-cart" onclick="addToCart('Gama Baja 1',150)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
+    </div>
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
+      <h3>Celular Gama Baja 2</h3>
+      <p>$180</p>
+      <button class="btn btn-cart" onclick="addToCart('Gama Baja 2',180)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
+    </div>
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
+      <h3>Celular Gama Baja 3</h3>
+      <p>$200</p>
+      <button class="btn btn-cart" onclick="addToCart('Gama Baja 3',200)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
+    </div>
+  </div>
+
+  <div id="media" class="products" style="display:none;">
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
+      <h3>Celular Gama Media 1</h3>
+      <p>$300</p>
+      <button class="btn btn-cart" onclick="addToCart('Gama Media 1',300)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
+    </div>
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
+      <h3>Celular Gama Media 2</h3>
+      <p>$350</p>
+      <button class="btn btn-cart" onclick="addToCart('Gama Media 2',350)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
+    </div>
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
+      <h3>Celular Gama Media 3</h3>
+      <p>$400</p>
+      <button class="btn btn-cart" onclick="addToCart('Gama Media 3',400)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
+    </div>
+  </div>
+
+  <div id="alta" class="products" style="display:none;">
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
+      <h3>Celular Gama Alta 1</h3>
+      <p>$800</p>
+      <button class="btn btn-cart" onclick="addToCart('Gama Alta 1',800)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
+    </div>
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
+      <h3>Celular Gama Alta 2</h3>
+      <p>$900</p>
+      <button class="btn btn-cart" onclick="addToCart('Gama Alta 2',900)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
+    </div>
+    <div class="product">
+      <img src="https://img.icons8.com/ios/100/smartphone.png" alt="Celular">
+      <h3>Celular Gama Alta 3</h3>
+      <p>$1000</p>
+      <button class="btn btn-cart" onclick="addToCart('Gama Alta 3',1000)">Añadir al Carrito</button>
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- PANEL DEL CARRITO -->
+  <div id="cartPanel" class="cart-panel">
+    <div class="cart-header">
+      <h2>Tu Carrito</h2>
+      <span class="close-cart" onclick="toggleCart()">✖</span>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <a href="https://wa.me/51949030039" target="_blank" class="btn btn-wa">Comprar en WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE WA -->
+  <a href="https://wa.me/51949030039" target="_blank" class="wa-float">💬</a>
 
   <script>
-    function showSection(sectionId) {
-      document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
-      document.getElementById(sectionId).style.display = "flex";
-      document.getElementById("logos").style.display = sectionId === "inicio" ? "flex" : "none";
+    function showSection(id) {
+      document.querySelectorAll('.products').forEach(sec => sec.style.display = 'none');
+      document.getElementById(id).style.display = 'flex';
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById("logos").style.display = (id === "inicio") ? "flex" : "none";
     }
 
-    function addToCart(product) {
-      const cartItems = document.getElementById("cartItems");
-      const div = document.createElement("div");
-      div.classList.add("cart-item");
-      div.innerText = product;
-      cartItems.appendChild(div);
+    let cart = [];
+
+    function addToCart(name, price) {
+      cart.push({name, price});
+      updateCart();
+      toggleCart(true);
     }
 
-    function toggleCart() {
-      document.getElementById("cartPanel").classList.toggle("open");
+    function updateCart() {
+      const container = document.getElementById("cartItems");
+      container.innerHTML = "";
+      cart.forEach((item, index) => {
+        let div = document.createElement("div");
+        div.innerHTML = `${item.name} - $${item.price}`;
+        container.appendChild(div);
+      });
+    }
+
+    function toggleCart(forceOpen) {
+      const panel = document.getElementById("cartPanel");
+      if (forceOpen) {
+        panel.classList.add("active");
+      } else {
+        panel.classList.toggle("active");
+      }
     }
   </script>
+
 </body>
 </html>
