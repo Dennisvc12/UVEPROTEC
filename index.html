@@ -5,177 +5,232 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UVEPROTECH — Catálogo de Celulares</title>
 <style>
-  body{font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9;}
-  header{background:#0a2540; color:white; text-align:center; padding:1rem; cursor:pointer;}
-  header h1{margin:0; font-size:1.8rem;}   /* UVEPROTECH más pequeño */
-  header p{margin:0; font-size:1.1rem; font-weight:bold;} /* Catálogo más pequeño */
-  nav{display:flex; justify-content:center; gap:1rem; background:#1b4d84; padding:.5rem; flex-wrap:wrap;}
-  nav button{background:white; border:none; padding:.5rem 1rem; border-radius:5px; cursor:pointer;}
-  nav button:hover{background:#60a5fa; color:white;}
-  .catalogo{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; padding:1rem;}
-  .producto{background:white; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,.1); padding:1rem; text-align:center;}
-  .producto img{max-width:100%; height:auto; border-radius:10px;}
-  .producto h3{margin:.5rem 0;}
-  .producto p{color:#333; font-weight:bold;}
-  .btns{display:flex; justify-content:center; gap:.5rem; margin-top:.5rem;}
-  .btns a{flex:1; text-decoration:none; padding:.5rem; border-radius:5px; font-size:.9rem; text-align:center;}
-  .carrito{background:#0a2540; color:white;}
-  .whatsapp{background:#25d366; color:white;}
+:root{
+  --azul-oscuro:#0a2540;
+  --azul-medio:#1b4d84;
+  --verde:#25d366;
+  --blanco:#fff;
+  --gris:#f5f5f5;
+}
 
-  /* Carrito lateral */
-  #carritoPanel{
-    position:fixed; top:0; right:-340px; width:320px; height:100%;
-    background:white; box-shadow:-2px 0 8px rgba(0,0,0,.3);
-    padding:1rem; transition:.3s; z-index:1000; overflow-y:auto;
-    display:flex; flex-direction:column; justify-content:space-between;
-  }
-  #carritoPanel.active{right:0;}
-  #carritoPanel h2{margin:0 0 .5rem 0; color:#0a2540;}
-  .item-carrito{border-bottom:1px solid #ccc; padding:.5rem 0;}
-  .cerrarCarrito{background:red; color:white; border:none; padding:.3rem .6rem; border-radius:5px; cursor:pointer; float:right;}
-  #accionesCarrito{margin-top:1rem; display:flex; flex-direction:column; gap:.5rem;}
-  #accionesCarrito button, #accionesCarrito a{
-    padding:.7rem; border:none; border-radius:6px; cursor:pointer; text-align:center;
-    font-weight:bold; text-decoration:none; display:block;
-  }
-  .btn-comprar{background:#0a2540; color:white;}
-  .btn-whatsapp{background:#25d366; color:white;}
+/* RESET */
+*{margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif;}
+
+/* HEADER */
+header{
+  background:var(--azul-oscuro);
+  color:var(--blanco);
+  text-align:center;
+  padding:25px 10px; /* AUMENTADO */
+}
+header h1{
+  font-size:1.8em; /* más pequeño */
+  margin-bottom:5px;
+}
+header p{
+  font-size:1.2em; /* más pequeño */
+}
+
+/* NAVBAR */
+nav{
+  background:var(--azul-medio);
+  padding:15px; /* AUMENTADO */
+  text-align:center;
+}
+nav button{
+  background:var(--blanco);
+  border:none;
+  padding:10px 18px;
+  margin:0 5px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+nav button:hover{
+  background:#ddd;
+}
+
+/* PRODUCTOS */
+.contenedor{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  padding:20px;
+  gap:20px;
+}
+.card{
+  background:var(--blanco);
+  border-radius:12px;
+  padding:15px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.15);
+  width:250px;
+  text-align:center;
+}
+.card img{
+  width:80px;
+  margin-bottom:10px;
+}
+.card h3{margin:10px 0;}
+.card p{font-weight:bold; margin-bottom:15px;}
+.botones{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+}
+.btn{
+  flex:1;
+  padding:8px;
+  border:none;
+  border-radius:6px;
+  color:white;
+  cursor:pointer;
+  font-size:0.9em;
+}
+.btn.add{background:var(--azul-oscuro);}
+.btn.whatsapp{background:var(--verde);}
+.btn:hover{opacity:0.9;}
+
+/* CARRITO (SEMI PESTAÑA) */
+#carritoPanel{
+  position:fixed;
+  top:0;
+  right:-400px;
+  width:300px;
+  height:100%;
+  background:var(--blanco);
+  box-shadow:-2px 0 6px rgba(0,0,0,0.3);
+  padding:20px;
+  transition:0.3s;
+  z-index:999;
+}
+#carritoPanel h2{
+  margin-bottom:10px;
+  font-size:1.2em;
+}
+#carritoPanel ul{
+  list-style:none;
+  margin-bottom:20px;
+}
+#carritoPanel ul li{
+  padding:6px 0;
+  border-bottom:1px solid #ddd;
+  font-size:0.9em;
+}
+#carritoPanel .acciones{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+#carritoPanel .acciones button{
+  padding:10px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:0.9em;
+}
+#carritoPanel .comprar{background:var(--azul-medio); color:white;}
+#carritoPanel .whatsapp{background:var(--verde); color:white;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .contenedor{flex-direction:column; align-items:center;}
+}
 </style>
 </head>
 <body>
 
-<header onclick="filtrar('inicio')">
-  <h1>UVEPROTECH</h1>
+<header>
+  <h1 onclick="mostrarInicio()" style="cursor:pointer;">UVEPROTECH</h1>
   <p>Catálogo de Celulares</p>
 </header>
 
 <nav>
-  <button onclick="filtrar('inicio')">Inicio</button>
-  <button onclick="filtrar('baja')">Gama Baja</button>
-  <button onclick="filtrar('media')">Gama Media</button>
-  <button onclick="filtrar('alta')">Gama Alta</button>
+  <button onclick="mostrarInicio()">Inicio</button>
+  <button onclick="mostrarGama('baja')">Gama Baja</button>
+  <button onclick="mostrarGama('media')">Gama Media</button>
+  <button onclick="mostrarGama('alta')">Gama Alta</button>
 </nav>
 
-<section class="catalogo" id="catalogo">
-  <!-- Ofertas de inicio -->
-  <div class="producto" data-gama="inicio">
-    <img src="https://via.placeholder.com/200x200?text=Oferta+1" alt="celular">
-    <h3>Oferta Especial 1</h3>
-    <p>$99</p>
-    <div class="btns">
-      <a href="#" class="carrito" onclick="addCarrito('Oferta Especial 1',99)">🛒 Añadir</a>
-      <a href="https://wa.me/51949030039" target="_blank" class="whatsapp">WhatsApp</a>
-    </div>
-  </div>
+<div class="contenedor" id="productos"></div>
 
-  <div class="producto" data-gama="inicio">
-    <img src="https://via.placeholder.com/200x200?text=Oferta+2" alt="celular">
-    <h3>Oferta Especial 2</h3>
-    <p>$199</p>
-    <div class="btns">
-      <a href="#" class="carrito" onclick="addCarrito('Oferta Especial 2',199)">🛒 Añadir</a>
-      <a href="https://wa.me/51949030039" target="_blank" class="whatsapp">WhatsApp</a>
-    </div>
-  </div>
-
-  <div class="producto" data-gama="inicio">
-    <img src="https://via.placeholder.com/200x200?text=Oferta+3" alt="celular">
-    <h3>Oferta Especial 3</h3>
-    <p>$299</p>
-    <div class="btns">
-      <a href="#" class="carrito" onclick="addCarrito('Oferta Especial 3',299)">🛒 Añadir</a>
-      <a href="https://wa.me/51949030039" target="_blank" class="whatsapp">WhatsApp</a>
-    </div>
-  </div>
-
-  <!-- Ejemplos de gamas -->
-  <div class="producto" data-gama="baja">
-    <img src="https://via.placeholder.com/200x200?text=Cel+Gama+Baja" alt="celular">
-    <h3>Celular Económico</h3>
-    <p>$120</p>
-    <div class="btns">
-      <a href="#" class="carrito" onclick="addCarrito('Celular Económico',120)">🛒 Añadir</a>
-      <a href="https://wa.me/51949030039" target="_blank" class="whatsapp">WhatsApp</a>
-    </div>
-  </div>
-
-  <div class="producto" data-gama="media">
-    <img src="https://via.placeholder.com/200x200?text=Cel+Gama+Media" alt="celular">
-    <h3>Celular Intermedio</h3>
-    <p>$250</p>
-    <div class="btns">
-      <a href="#" class="carrito" onclick="addCarrito('Celular Intermedio',250)">🛒 Añadir</a>
-      <a href="https://wa.me/51949030039" target="_blank" class="whatsapp">WhatsApp</a>
-    </div>
-  </div>
-
-  <div class="producto" data-gama="alta">
-    <img src="https://via.placeholder.com/200x200?text=iPhone" alt="celular">
-    <h3>iPhone Pro</h3>
-    <p>$1200</p>
-    <div class="btns">
-      <a href="#" class="carrito" onclick="addCarrito('iPhone Pro',1200)">🛒 Añadir</a>
-      <a href="https://wa.me/51949030039" target="_blank" class="whatsapp">WhatsApp</a>
-    </div>
-  </div>
-</section>
-
-<!-- Panel Carrito -->
+<!-- PANEL DEL CARRITO -->
 <div id="carritoPanel">
-  <button class="cerrarCarrito" onclick="toggleCarrito()">X</button>
-  <h2>🛒 Carrito</h2>
-  <div id="itemsCarrito"></div>
-  <p id="total"></p>
-  <div id="accionesCarrito">
-    <button class="btn-comprar">Comprar</button>
-    <a href="#" id="btnWhatsapp" target="_blank" class="btn-whatsapp">Ir a WhatsApp</a>
+  <h2>Carrito</h2>
+  <ul id="listaCarrito"></ul>
+  <div class="acciones">
+    <button class="comprar" onclick="alert('Proceder a compra')">Comprar</button>
+    <button class="whatsapp" onclick="irWhatsApp()">Ir a WhatsApp</button>
   </div>
 </div>
 
 <script>
-  function filtrar(gama){
-    let productos = document.querySelectorAll(".producto");
-    productos.forEach(p=>{
-      if(p.dataset.gama===gama){
-        p.style.display="block";
-      } else {
-        p.style.display="none";
-      }
-    });
-  }
-  // Mostrar inicio al cargar
-  filtrar('inicio');
+const productos = {
+  inicio:[
+    {nombre:"Oferta Especial 1", precio:99, imagen:"https://via.placeholder.com/80"},
+    {nombre:"Oferta Especial 2", precio:199, imagen:"https://via.placeholder.com/80"},
+    {nombre:"Oferta Especial 3", precio:299, imagen:"https://via.placeholder.com/80"},
+  ],
+  baja:[
+    {nombre:"Celular Gama Baja 1", precio:120, imagen:"https://via.placeholder.com/80"},
+    {nombre:"Celular Gama Baja 2", precio:150, imagen:"https://via.placeholder.com/80"},
+  ],
+  media:[
+    {nombre:"Celular Gama Media 1", precio:350, imagen:"https://via.placeholder.com/80"},
+    {nombre:"Celular Gama Media 2", precio:450, imagen:"https://via.placeholder.com/80"},
+  ],
+  alta:[
+    {nombre:"Celular Gama Alta 1", precio:900, imagen:"https://via.placeholder.com/80"},
+    {nombre:"Celular Gama Alta 2", precio:1100, imagen:"https://via.placeholder.com/80"},
+  ]
+};
 
-  // Carrito
-  let carrito = [];
-  function addCarrito(nombre, precio){
-    carrito.push({nombre, precio});
-    renderCarrito();
-    toggleCarrito(true);
-  }
-  function renderCarrito(){
-    let cont = document.getElementById("itemsCarrito");
-    cont.innerHTML = "";
-    let total = 0;
-    carrito.forEach(item=>{
-      cont.innerHTML += `<div class="item-carrito">${item.nombre} - $${item.precio}</div>`;
-      total += item.precio;
-    });
-    document.getElementById("total").innerText = "Total: $" + total;
+let carrito=[];
 
-    // Actualizar link de WhatsApp
-    let mensaje = "Hola, quiero comprar:\n";
-    carrito.forEach(i => mensaje += `- ${i.nombre} ($${i.precio})\n`);
-    mensaje += `Total: $${total}`;
-    let url = "https://wa.me/51949030039?text=" + encodeURIComponent(mensaje);
-    document.getElementById("btnWhatsapp").href = url;
-  }
-  function toggleCarrito(forceOpen=false){
-    let panel = document.getElementById("carritoPanel");
-    if(forceOpen){ panel.classList.add("active"); }
-    else{ panel.classList.toggle("active"); }
-  }
+function mostrarProductos(lista){
+  const cont=document.getElementById("productos");
+  cont.innerHTML="";
+  lista.forEach(p=>{
+    const card=document.createElement("div");
+    card.className="card";
+    card.innerHTML=`
+      <img src="${p.imagen}" alt="celular">
+      <h3>${p.nombre}</h3>
+      <p>$${p.precio}</p>
+      <div class="botones">
+        <button class="btn add" onclick="añadirCarrito('${p.nombre}',${p.precio})">🛒 Añadir</button>
+        <button class="btn whatsapp" onclick="irWhatsApp('${p.nombre}',${p.precio})">WhatsApp</button>
+      </div>
+    `;
+    cont.appendChild(card);
+  });
+}
+
+function mostrarInicio(){mostrarProductos(productos.inicio);}
+function mostrarGama(tipo){mostrarProductos(productos[tipo]);}
+
+function añadirCarrito(nombre,precio){
+  carrito.push({nombre,precio});
+  actualizarCarrito();
+  document.getElementById("carritoPanel").style.right="0";
+}
+function actualizarCarrito(){
+  const lista=document.getElementById("listaCarrito");
+  lista.innerHTML="";
+  carrito.forEach(p=>{
+    const li=document.createElement("li");
+    li.textContent=`${p.nombre} - $${p.precio}`;
+    lista.appendChild(li);
+  });
+}
+function irWhatsApp(nombre="",precio=""){
+  let texto="Hola, quiero comprar:\n";
+  carrito.forEach(p=>texto+=`- ${p.nombre} $${p.precio}\n`);
+  let url=`https://wa.me/51949030039?text=${encodeURIComponent(texto)}`;
+  window.open(url,"_blank");
+}
+
+mostrarInicio();
 </script>
-
 </body>
 </html>
