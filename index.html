@@ -15,14 +15,24 @@
       background: #0a2540;
       color: white;
       padding: 1rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      text-align: center;
       position: relative;
     }
     header h1 { margin: 0; font-size: 2rem; }
     header p { margin: 0; font-size: 1rem; }
+
+    /* Logos arriba */
+    .logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem;
+      background: white;
+    }
+    .logos img {
+      height: 50px;
+    }
 
     /* Botón carrito */
     .cart-icon {
@@ -82,32 +92,11 @@
       cursor: pointer;
     }
 
-    /* Logos Marquee */
-    .logos {
-      overflow: hidden;
-      white-space: nowrap;
-      background: white;
-      padding: 1rem 0;
-    }
-    .logos img {
-      height: 40px;
-      margin: 0 20px;
-      vertical-align: middle;
-    }
-    .logos-slide {
-      display: inline-block;
-      animation: slide 15s linear infinite;
-    }
-    @keyframes slide {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
     /* Carrito lateral */
     .cart {
       position: fixed;
       top: 0;
-      right: -400px;
+      right: -350px;
       width: 300px;
       height: 100%;
       background: white;
@@ -119,13 +108,14 @@
     }
     .cart.open { right: 0; }
     .cart h2 { margin-top: 0; }
-    .cart-items { flex: 1; overflow-y: auto; }
+    .cart-items { flex: 1; overflow-y: auto; margin-top: 1rem; }
     .cart button {
       margin-top: 10px;
       padding: 0.7rem;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      width: 100%;
     }
     .btn-whatsapp {
       background: #25D366; color: white;
@@ -164,6 +154,13 @@
 </head>
 <body>
 
+<!-- Logos arriba -->
+<div class="logos">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Xiaomi_logo.svg" alt="Xiaomi">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+</div>
+
 <header>
   <h1>UVEPROTECH</h1>
   <p>Catálogo de Celulares</p>
@@ -198,15 +195,6 @@
   </div>
 </section>
 
-<!-- Logos solo en Inicio -->
-<div id="logos-section" class="logos">
-  <div class="logos-slide">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Xiaomi_logo.svg" alt="Xiaomi">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
-  </div>
-</div>
-
 <!-- Carrito -->
 <div class="cart" id="cart">
   <span class="close-cart" onclick="toggleCart()">✖</span>
@@ -228,8 +216,6 @@
     document.getElementById(section).style.display = 'flex';
     document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
     event.target.classList.add('active');
-    // Mostrar logos solo en inicio
-    document.getElementById('logos-section').style.display = (section === 'inicio') ? 'block' : 'none';
   }
 
   function toggleCart() {
