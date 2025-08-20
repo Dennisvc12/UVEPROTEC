@@ -1,301 +1,248 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UVEPROTECH — Catálogo de Celulares</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f8f9fa;
-    }
-
-    /* Header */
-    header {
-      background-color: #0a2540;
-      color: white;
-      padding: 20px 0 30px 0;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.8em;
-    }
-    header h2 {
-      margin: 5px 0 0 0;
-      font-size: 1em;
-      font-weight: normal;
-    }
-
-    /* Barra de navegación */
-    nav {
-      background-color: #1b4d84;
-      padding: 15px;
-      text-align: center;
-    }
-    nav button {
-      background: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    nav button:hover {
-      background: #e0e0e0;
-    }
-
-    /* Contenedor productos */
-    .productos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-    }
-    .producto {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      padding: 15px;
-      width: 250px;
-      text-align: center;
-    }
-    .producto img {
-      max-width: 100px;
-      margin-bottom: 10px;
-    }
-    .producto h3 {
-      margin: 10px 0;
-    }
-    .producto p {
-      font-weight: bold;
-      color: #333;
-    }
-    .botones {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .btn {
-      flex: 1;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .btn-carrito {
-      background: #0a2540;
-      color: white;
-    }
-    .btn-whatsapp {
-      background: #25d366;
-      color: white;
-    }
-
-    /* Carrito lateral */
-    .carrito {
-      position: fixed;
-      top: 0;
-      right: -400px;
-      width: 300px;
-      height: 100%;
-      background: #fff;
-      box-shadow: -2px 0 8px rgba(0,0,0,0.3);
-      padding: 20px;
-      transition: right 0.3s ease;
-      z-index: 1000;
-    }
-    .carrito.abierto {
-      right: 0;
-    }
-    .carrito h2 {
-      margin-top: 0;
-    }
-    .carrito ul {
-      list-style: none;
-      padding: 0;
-    }
-    .carrito ul li {
-      margin: 10px 0;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-    }
-    .carrito .acciones {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .carrito .acciones button {
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .carrito .comprar {
-      background: #0a2540;
-      color: white;
-    }
-    .carrito .whatsapp {
-      background: #25d366;
-      color: white;
-    }
-
-    /* Carrusel de Logos */
-    .marcas-wrapper{
-      overflow:hidden;
-      width:100%;
-      background:#fafafa;
-      padding:20px 0;
-      border-top:2px solid #eee;
-      margin-top:20px;
-    }
-    .marcas{
-      display:flex;
-      gap:50px;
-      animation:scroll 25s linear infinite;
-    }
-    .marcas img{
-      height:40px;
-      opacity:0.8;
-      transition:0.3s;
-    }
-    .marcas img:hover{
-      opacity:1;
-      transform:scale(1.1);
-    }
-    @keyframes scroll {
-      0% { transform:translateX(0); }
-      100% { transform:translateX(-50%); }
-    }
-    @media(max-width:768px){
-      .marcas img{height:30px;}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UVEPROTECH — Catálogo de Celulares</title>
+<style>
+:root {
+  --azul-1: #0a2540;
+  --azul-2: #1b4d84;
+  --verde: #25d366;
+  --blanco: #ffffff;
+  --gris: #f4f4f4;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--gris);
+}
+header {
+  background: var(--azul-1);
+  color: var(--blanco);
+  text-align: center;
+  padding: 25px 10px;
+}
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+header p {
+  margin: 5px 0 0;
+  font-size: 1.1rem;
+}
+nav {
+  background: var(--azul-2);
+  padding: 15px;
+  text-align: center;
+}
+nav button {
+  background: var(--blanco);
+  border: none;
+  padding: 10px 18px;
+  margin: 0 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+nav button:hover {
+  background: #e0e0e0;
+}
+.catalogo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 25px;
+}
+.card {
+  background: var(--blanco);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  width: 280px;
+  text-align: center;
+}
+.card img {
+  width: 80px;
+  height: auto;
+}
+.card h3 {
+  margin: 10px 0;
+}
+.card .precio {
+  font-weight: bold;
+  margin: 8px 0;
+}
+.card button, .card a {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.card button {
+  background: var(--azul-1);
+  color: var(--blanco);
+  border: none;
+  cursor: pointer;
+}
+.card button:hover {
+  background: #051d34;
+}
+.card a {
+  background: var(--verde);
+  color: var(--blanco);
+}
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 350px;
+  height: 100%;
+  background: var(--blanco);
+  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+  transition: right 0.3s ease-in-out;
+  padding: 20px;
+  overflow-y: auto;
+}
+.cart-panel.active {
+  right: 0;
+}
+.cart-panel h2 {
+  margin-top: 0;
+}
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+.cart-actions {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cart-actions a, .cart-actions button {
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+.cart-actions button {
+  background: var(--azul-1);
+  color: var(--blanco);
+  border: none;
+}
+.cart-actions a {
+  background: var(--verde);
+  color: var(--blanco);
+}
+/* Logos deslizantes */
+.logos-container {
+  overflow: hidden;
+  background: var(--blanco);
+  padding: 20px 0;
+}
+.logos-slide {
+  display: flex;
+  width: calc(200px * 8);
+  animation: scroll 20s linear infinite;
+}
+.logos-slide img {
+  width: 150px;
+  margin: 0 25px;
+  object-fit: contain;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1 onclick="mostrarSeccion('inicio')" style="cursor:pointer;">UVEPROTECH</h1>
-    <h2>Catálogo de Celulares</h2>
-  </header>
+<header>
+  <h1><a href="#" onclick="showSection('inicio')" style="color:white; text-decoration:none;">UVEPROTECH</a></h1>
+  <p>Catálogo de Celulares</p>
+</header>
 
-  <!-- Navegación -->
-  <nav>
-    <button onclick="mostrarSeccion('inicio')">Inicio</button>
-    <button onclick="mostrarSeccion('gama-baja')">Gama Baja</button>
-    <button onclick="mostrarSeccion('gama-media')">Gama Media</button>
-    <button onclick="mostrarSeccion('gama-alta')">Gama Alta</button>
-  </nav>
+<nav>
+  <button onclick="showSection('inicio')">Inicio</button>
+  <button onclick="showSection('baja')">Gama Baja</button>
+  <button onclick="showSection('media')">Gama Media</button>
+  <button onclick="showSection('alta')">Gama Alta</button>
+</nav>
 
-  <!-- Inicio -->
-  <div id="inicio" class="productos">
-    <div class="producto">
-      <img src="https://cdn-icons-png.flaticon.com/512/10613/10613769.png" alt="celular">
-      <h3>Oferta Especial 1</h3>
-      <p>$99</p>
-      <div class="botones">
-        <button class="btn btn-carrito" onclick="añadirCarrito('Oferta Especial 1',99)">Añadir</button>
-        <button class="btn btn-whatsapp" onclick="abrirWhatsApp('Oferta Especial 1',99)">WhatsApp</button>
-      </div>
-    </div>
-    <div class="producto">
-      <img src="https://cdn-icons-png.flaticon.com/512/10613/10613769.png" alt="celular">
-      <h3>Oferta Especial 2</h3>
-      <p>$199</p>
-      <div class="botones">
-        <button class="btn btn-carrito" onclick="añadirCarrito('Oferta Especial 2',199)">Añadir</button>
-        <button class="btn btn-whatsapp" onclick="abrirWhatsApp('Oferta Especial 2',199)">WhatsApp</button>
-      </div>
-    </div>
-    <div class="producto">
-      <img src="https://cdn-icons-png.flaticon.com/512/10613/10613769.png" alt="celular">
-      <h3>Oferta Especial 3</h3>
-      <p>$299</p>
-      <div class="botones">
-        <button class="btn btn-carrito" onclick="añadirCarrito('Oferta Especial 3',299)">Añadir</button>
-        <button class="btn btn-whatsapp" onclick="abrirWhatsApp('Oferta Especial 3',299)">WhatsApp</button>
-      </div>
-    </div>
+<div id="inicio" class="catalogo">
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Oferta Especial 1</h3>
+    <p class="precio">$99</p>
+    <button onclick="addToCart('Oferta Especial 1', 99)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
   </div>
-
-  <!-- Carrusel Logos -->
-  <div class="marcas-wrapper">
-    <div class="marcas">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Poco_logo.svg" alt="Poco">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Motorola_logo.svg" alt="Motorola">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Honor_logo.svg" alt="Honor">
-      <!-- duplicados para efecto infinito -->
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Poco_logo.svg" alt="Poco">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Motorola_logo.svg" alt="Motorola">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Honor_logo.svg" alt="Honor">
-    </div>
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Oferta Especial 2</h3>
+    <p class="precio">$199</p>
+    <button onclick="addToCart('Oferta Especial 2', 199)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
   </div>
-
-  <!-- Carrito -->
-  <div class="carrito" id="carrito">
-    <h2>Carrito</h2>
-    <ul id="lista-carrito"></ul>
-    <div class="acciones">
-      <button class="comprar" onclick="alert('Compra realizada!')">Comprar</button>
-      <button class="whatsapp" onclick="irWhatsAppCarrito()">Ir a WhatsApp</button>
-    </div>
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1040/1040230.png" alt="celular">
+    <h3>Oferta Especial 3</h3>
+    <p class="precio">$299</p>
+    <button onclick="addToCart('Oferta Especial 3', 299)">🛒 Añadir al Carrito</button>
+    <a href="https://wa.me/51949030039" target="_blank">WhatsApp</a>
   </div>
+</div>
 
-  <script>
-    let carrito = [];
+<!-- Logos -->
+<div class="logos-container">
+  <div class="logos-slide">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Samsung_logo_blue.png/320px-Samsung_logo_blue.png" alt="Samsung">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Xiaomi_logo.svg/320px-Xiaomi_logo.svg.png" alt="Xiaomi">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/220px-Apple_logo_black.svg.png" alt="Apple">
+    <img src="https://seeklogo.com/images/I/infinix-logo-568A9B51A2-seeklogo.com.png" alt="Infinix">
+  </div>
+</div>
 
-    function mostrarSeccion(id) {
-      document.querySelectorAll('.productos').forEach(sec => sec.style.display = 'none');
-      document.getElementById(id).style.display = 'flex';
-    }
+<!-- Panel del Carrito -->
+<div class="cart-panel" id="cartPanel">
+  <h2>🛒 Carrito</h2>
+  <div id="cartItems"></div>
+  <div class="cart-actions">
+    <button onclick="checkout()">Comprar</button>
+    <a href="https://wa.me/51949030039" target="_blank">Ir a WhatsApp</a>
+  </div>
+</div>
 
-    function añadirCarrito(nombre, precio) {
-      carrito.push({ nombre, precio });
-      actualizarCarrito();
-      document.getElementById('carrito').classList.add('abierto');
-    }
+<script>
+let cart = [];
+function addToCart(product, price) {
+  cart.push({product, price});
+  updateCart();
+  document.getElementById("cartPanel").classList.add("active");
+}
+function updateCart() {
+  const cartItems = document.getElementById("cartItems");
+  cartItems.innerHTML = "";
+  cart.forEach((item, index) => {
+    cartItems.innerHTML += `<div class="cart-item">${item.product} - $${item.price}</div>`;
+  });
+}
+function checkout() {
+  alert("Procesando compra de " + cart.length + " productos.");
+}
+function showSection(section) {
+  document.querySelectorAll(".catalogo").forEach(el => el.style.display = "none");
+  document.getElementById(section).style.display = "flex";
+}
+showSection('inicio');
+</script>
 
-    function actualizarCarrito() {
-      const lista = document.getElementById('lista-carrito');
-      lista.innerHTML = "";
-      carrito.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.nombre} - $${item.precio}`;
-        lista.appendChild(li);
-      });
-    }
-
-    function abrirWhatsApp(nombre, precio) {
-      const mensaje = `Hola, estoy interesado en ${nombre} que cuesta $${precio}`;
-      window.open(`https://wa.me/51949030039?text=${encodeURIComponent(mensaje)}`, "_blank");
-    }
-
-    function irWhatsAppCarrito() {
-      if (carrito.length === 0) {
-        alert("El carrito está vacío.");
-        return;
-      }
-      let mensaje = "Hola, quiero comprar estos productos:\n";
-      carrito.forEach(item => {
-        mensaje += `- ${item.nombre} ($${item.precio})\n`;
-      });
-      window.open(`https://wa.me/51949030039?text=${encodeURIComponent(mensaje)}`, "_blank");
-    }
-
-    mostrarSeccion('inicio');
-  </script>
 </body>
 </html>
