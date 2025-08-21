@@ -149,17 +149,17 @@
   <section id="inicio" class="section active">
     <div class="card">
       <img src="https://images.fravega.com/f300/9f6ffa48a0d9f0a936d8c0dcb3aea346.png.webp" alt="Oferta">
-      <h3>Oferta Especial POCO C71 4GB/128GB </h3><p>POCO C71 4GB/128GB</p><br><p>S/449</p>
+      <h3>Oferta Especial</h3><p>POCO C71 4GB/128GB</p><br><p>S/449</p>
       <button onclick="addToCart('Oferta Especial 1',449)">Añadir al Carrito</button>
     </div>
     <div class="card">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx1AhbIFP2plhOzsJYwKhJnhSFRxVNsC13PA&s" alt="Oferta">
-      <h3>Oferta Especial Galaxy A26 5G 6GB/128GB</h3><p>Galaxy A26 5G 6GB/128GB</p><br><p>S/1099</p>
+      <h3>Oferta Especial </h3><p>Galaxy A26 5G 6GB/128GB</p><br><p>S/1099</p>
       <button onclick="addToCart('Oferta Especial 2',1099)">Añadir al Carrito</button>
     </div>
     <div class="card">
       <img src="https://deliblumoviles.com.pe/wp-content/uploads/2024/10/I13A2.webp" alt="Oferta">
-      <h3>Oferta Especial iPhone 13 128GB</h3><p>iPhone 13 128GB</p><br><p>S/2199</p>
+      <h3>Oferta Especial </h3><p>iPhone 13 128GB</p><br><p>S/2199</p>
       <button onclick="addToCart('Oferta Especial 3',2199)">Añadir al Carrito</button>
     </div>
   </section>
@@ -282,8 +282,8 @@
       const row = document.createElement('div');
       row.className = 'cart__item';
       row.innerHTML = `
-        <strong>S/{it.name}</strong>
-        ${it.price ? ' - $'+it.price : ''}
+        <strong>${it.name}</strong>
+        S/{it.price ? ' - $'+it.price : ''}
       `;
       cartItems.appendChild(row);
     });
@@ -305,6 +305,7 @@
 </script>
 </body>
 </html>
+
 
 
 
