@@ -282,8 +282,8 @@
       const row = document.createElement('div');
       row.className = 'cart__item';
       row.innerHTML = `
-        <strong>S/{it.name}</strong>
-        S/{it.price ? ' - S/'+it.price : ''}
+        <strong>${it.name}</strong>
+        ${it.price ? ' - $'+it.price : ''}
       `;
       cartItems.appendChild(row);
     });
@@ -305,6 +305,7 @@
 </script>
 </body>
 </html>
+
 
 
 
