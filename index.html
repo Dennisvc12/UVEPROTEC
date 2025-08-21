@@ -283,7 +283,7 @@
       row.className = 'cart__item';
       row.innerHTML = `
         <strong>${it.name}</strong>
-        S/{it.price ? ' - $'+it.price : ''}
+        ${it.price ? ' - S/'+it.price : ''}
       `;
       cartItems.appendChild(row);
     });
@@ -305,6 +305,7 @@
 </script>
 </body>
 </html>
+
 
 
 
